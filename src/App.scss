@@ -1,0 +1,573 @@
+body {
+  color: #333;
+}
+h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2E74AC;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #444;
+  -webkit-box-shadow: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, rgba(38,160,62,1) 0%, rgba(30,138,54,1) 100%);
+  transition: width 0.2s;
+  transition-timing-function: linear;
+  height: 5px;
+}
+
+.error {
+  color: red;
+  position: absolute;
+  right: -10px;
+  top: -8px;
+}
+
+.form-container {
+  width: 60%;
+  border-radius: 3px;
+  margin: 2em auto 4em;
+  padding: 2em;
+  box-shadow:0 0 0 1px hsla(0,0%,0%,0.1),0 4px 11px hsla(0,0%,0%,0.1);
+  .css-2b097c-container {
+    .css-yk16xz-control, .css-1pahdxg-control {
+      .css-1hwfws3 {
+        padding: 0 8px;      
+        .css-b8ldur-Input {
+          margin: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+
+        }
+      }
+    }
+  }
+  label {
+    line-height: 2em;
+    position: relative;
+    &.radiobutton-container {
+      line-height: 1em;
+    }
+  }
+  
+  div {
+    &.frequency-of-delivery {
+      margin-bottom: 0.8em;
+    }
+  }
+
+//494c51
+input {
+  border: 1px solid hsl(0,0%,60%);
+  outline: none;
+  font-size: 1rem;
+  padding: 2px 8px;
+  margin: 0 0 0.8em 0;
+  width: auto;
+  &[type="text"]{
+    &:hover {
+      cursor: text;
+      //background-color: hsl(0,0%,98%);
+    }    
+  }
+  
+  &:hover {
+    border-color: hsl(0,0%,70%);
+  }
+  &.css-yk16xz-control {
+    &:focus {
+      border-color:#2684FF;
+      box-shadow:0 0 0 1px #2684FF;
+    }
+    &[type="checkbox"] {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    &:disabled {
+      background-color: hsl(0,0%,90%) !important;
+      border-color: hsl(0,0%,70%);
+      cursor: default;
+      &:hover {
+        border-color: hsl(0,0%,70%);
+      }
+    }
+  }  
+}
+
+  //checkboxes
+  .checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 2em;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked {
+        ~ {
+          .checkbox-checkmark {
+            background-color: #2196F3;
+            border: 1px solid #6BB9F7;
+            &:after {
+              display: block;
+            }
+          }
+        }
+      }
+      &:disabled {
+        ~ {
+          .checkbox-checkmark {
+            background-color: hsl(0,0%,70%);
+            border: 1px solid hsl(0,0%,70%);
+            cursor: default;
+          }
+        }
+      }
+    }
+    &:hover {
+      input {
+        ~ {
+          .checkbox-checkmark {
+            border: 1px solid hsl(0,0%,60%)
+          }
+        }
+        &:checked {
+          ~ {
+            .checkbox-checkmark {
+              border: 1px solid #9CD0F9;
+            }
+          }
+        }
+        &:disabled {
+          ~ {
+            .checkbox-checkmark {
+              background-color: hsl(0,0%,70%);
+              border: 1px solid hsl(0,0%,70%);
+              cursor: default;
+            }
+          }
+        }
+      }
+    }
+    .checkbox-checkmark {
+      &:after {
+        left: 5px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .checkbox-checkmark {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 3px;
+    background: hsl(0,0%,100%);
+    border: 1px solid hsl(0,0%,70%);
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+  }
+
+  //rediobuttons
+  .radiobutton-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      &:checked {
+        ~ {
+          .radiobutton-checkmark {
+            background-color: #2196F3;
+            border: 1px solid #6BB9F7;
+            &:after {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      input {
+        ~ {
+          .radiobutton-checkmark {
+            border: 1px solid hsl(0,0%,60%);
+          }
+        }
+        &:checked {
+          ~ {
+            .radiobutton-checkmark {
+              border: 1px solid #9CD0F9;
+            }
+          }
+        }
+      }
+    }
+    .radiobutton-checkmark {
+      &:after {
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+      }
+    }
+  }
+  .radiobutton-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background: hsl(0,0%,100%);
+    border: 1px solid hsl(0,0%,70%);
+    border-radius: 50%;
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+  }
+
+  //card
+  .card {
+    width: 510px;
+    height: 300px;
+    border: 1px solid #dddfe0;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: relative;
+    background: #ffffff;
+    margin-bottom: 1em;
+    &.on {
+      background: #e5e5e5;
+      box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+      .card-chip {
+        display: block;
+      }
+      &.card-saved {
+        .card-text {
+          z-index: 9;
+        }
+        /*.card-payment-system {
+          bottom: 10px;
+          top: auto; 
+          if we want to place logo bottom the card
+        }*/ 
+      }
+    }
+    input {
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 1rem;
+      height: 1.8em;
+      padding: 0 0 0 0.3rem;
+      margin: 0.2em 0 0 0;
+      width: auto;
+      color: #555555;
+    }
+    .card-chip {
+      position: absolute;
+      width: 3.2em;
+      height: 2.8em;
+      top: 38%;
+      left: 10%;
+      background: rgb(248,202,16);
+      background: linear-gradient(120deg, rgba(248,202,16,1) 0%, rgba(220,161,32,1) 85%, rgba(223,160,27,1) 100%);
+      border-radius: 5px;
+      border: none;
+      overflow: hidden;
+      display: none;
+      .card-chip_lev1 {
+        height: 100%;
+        position: absolute;
+        .card-chip_lev2 {
+          position: absolute;
+          width: 100%;
+          &.part1 {
+            left: 0;
+            bottom: 0;   
+            height: 23%;       
+            border-top: 1px solid #282c34;
+          }
+          &.part2 {
+            left: 0;
+            bottom: 25%;   
+            height: 25%;       
+            border-top: 1px solid #282c34;
+          }
+          &.part3 {
+            left: 0;
+            top: 0;   
+            height: 21%;       
+            border-bottom: 1px solid #282c34;
+          }
+          &.part4 {
+            left: 0;
+            bottom: 0;   
+            height: 33%;       
+            border-top: 1px solid #282c34;
+          }
+          &.part5 {
+            left: 0;
+            top: 0;   
+            height: 27%;       
+            border-bottom: 1px solid #282c34;
+          }
+        }
+        &.part1 {
+          left: 0;
+          width: 30%;
+          border-right: 1px solid #282c34;
+        }
+        &.part2 {
+          height: 70%;
+          width: 30%;
+          border-left: 1px solid #282c34;
+          border-top: 1px solid #282c34;
+          border-radius: 4px 0 0 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+    .card-payment-system {
+      position: absolute;
+      width: 5em;
+      height: 5em;
+      top: 40px;
+      right: 40px;
+      & > div {
+        width: 100%;
+        height: 100%;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+      }
+      .american-express {
+        background-image: url('i/American_Express_logo_2018.svg'); 
+      }
+      .visa {
+        background-image: url('i/Visa_2014_logo_detail.svg'); 
+      }
+      .mastercard {
+        background-image: url('i/Mastercard_2019_logo.svg');
+      }
+      .discover {
+        background-image: url('i/Discover_Card_logo.svg');
+      }
+      .dinnerclub {
+        background-image: url('i/Diners_Club_Logo3.svg');
+      }
+      .JCB {
+        background-image: url('i/JCB_logo.svg');
+      }
+      
+      
+    }
+    .card-number {
+      position: absolute;
+      top: 55%;
+      left: 10%;
+      width: 60%;
+      input {
+        width: 95%;
+      }
+      span {
+
+      }
+      .card-number-valid {
+        position: absolute;
+        right: 14px;
+        top: 8px;
+        font-size: 120%;
+        color: #2ddc20;
+        display: none;
+        &.active {
+          display: block;
+        }
+      }
+    }
+    .card-valid {
+      position: absolute;
+      top: 69%;
+      left: 15%;
+      width: 120px;
+      height: 40px;
+      .card-valid-month {
+        width: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .card-valid-year {
+        width: 50px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .card-valid-divider {
+        display: none;
+        position: absolute;
+        top: 67%;
+        left: 25%;
+        font-size: 150%;
+      }
+      
+      .css-2b097c-container {
+        width: 50px;
+        .css-yk16xz-control {
+          border-radius: 0;
+          height: 30px;
+          min-height: 25px;
+          .css-1hwfws3 {
+            padding: 0;
+            position: relative;
+            overflow: visible;          
+            .css-b8ldur-Input {
+              display: none;
+            }
+            .css-1wa3eu0-placeholder {
+              display: none;
+            }
+            .css-1uccc91-singleValue {
+              overflow: visible;
+            }
+          }
+          .css-1hb7zxy-IndicatorsContainer {
+            .css-tlfecz-indicatorContainer {
+              padding: 4px;
+            }
+            .css-1okebmr-indicatorSeparator {
+              display: none;
+            }
+            
+          }
+          
+        }
+        .css-1pahdxg-control {
+          border: none;
+          box-shadow: none;
+          &:hover {
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+    
+    .card-cardholder {
+      position: absolute;
+      left: 10%;
+      bottom: 8%;
+      width: 60%;
+      input {
+        width: 75%;
+      }
+    }
+    .card-cvv {
+      position: absolute;
+      top: 55%;
+      right: 10%;
+      width: 10%;
+      input {
+        width: 85%;
+      }
+      span {
+        position: absolute; 
+        font-style: italic;
+        left: -1.8em;
+        line-height: 2.2em;
+        font-size: 110%;
+      }
+      .card-text {
+        text-shadow: none;
+        color: #202020;
+        font-size: 130%;
+      }
+    }
+
+    .card-text {
+      position: absolute;
+      z-index: -1;
+      background: #e5e5e5;
+      text-shadow: 1px 1px #1f1f1f, 1.4px 2px #777;
+      //text-shadow: 1px 1px #4c4c4c, 1.4px 2px #858585;
+      color: #f6c910;
+      font-size: 120%;
+      line-height: 1.8em;
+      height: 100%;
+      width: 100%;
+      & > div {
+        display: inline-block;
+        &.card-text-devider {
+          margin: 0 0.4em 0;
+        }
+      }
+    } 
+  }
+  .signup-button {
+    padding: 0.8em 2em;
+    background: #2E74AC;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 2em auto;
+    display: block;
+    &:hover {
+      background-color: #2B7BBB;
+      border: 1px solid #9CD0F9;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+//.css-2b097c-container {}
+.css-26l3qy-menu {box-shadow: none; border-radius: 0;}

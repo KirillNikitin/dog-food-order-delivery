@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is prototype of sign-up form of dogs food delivery order. With possibility to choose not only monthly delivery, 
+but with more frequently options. Form consists of order information (Customer info, info of the pet, address and so on) 
+and the bank card info, where we have validation for cards of Visa, MasterCard, American Express, Discover Card, Dinner Club 
+and JCB payment systems. Functionality can be easily extended for another payment systems as well. 
+If card number, cvv and expiration (month and year) valid - it is possible to see the design prototype of saving this card for 
+further use in the future.
+
+Range of dog's breeds (now it is only 7 as prototype) can be extended to full plus input field "please enter the dog breed if 
+it is not available from the list".
+
 ## Available Scripts
 
 In the project directory, you can run:
