@@ -129,15 +129,29 @@ class App extends Component {
 	}
 	handleSubmit(e) {
 		e.preventDefault();
-		let errors = {}
+		let errors = {}, count = 0;
 		for(let [key, value] of Object.entries(this.state.order)){
-			if(!value.length) {
-				errors[key] = true
+			if(!value.length && typeof this.state.order[key] === 'string' && key !== 'dogsName') {
+				if(this.state.order.customerIsRecipient) {
+					if(key === 'recipientName' || key === 'recipientSurname' || key === 'recipientPhonenumber') {
+						count += 0; 
+						errors[key] = false; 
+					} else {
+						count += 1;
+						errors[key] = true;
+					}
+				} else {
+					count += 1;
+					errors[key] = true;
+				}			
 			}
 		}
-
+		if(!count) {
+			(this.state.cardNumberIsValid && this.state.cvvInputFlag && this.state.month !== '' && this.state.year !== '') 
+				? alert('data is ready to be sent to the server side')
+				: alert('Did not you forget about the bankcard?')
+		}
 		this.setState({errors: errors});
-		console.log(this.state.errors);
 	}
 	divideByFour(str){
 		let space = [];
@@ -151,7 +165,6 @@ class App extends Component {
 	cardNumberValidate(e) {
 		const re = /^[0-9 \b]+$/;
 		if((e.target.value === '' || re.test(e.target.value)) && e.target.value.length < 20) {
-			console.log(parseInt(e.target.value))
 			let inputValue = e.target.value.replace(/ /g,'');
 			this.setState({
 				cardNumberInputFlag: true, 
@@ -159,7 +172,6 @@ class App extends Component {
 				inputValueSpaced: this.divideByFour(e.target.value)
 			});	
 			
-			console.log(this.state.inputValueSpaced);
 			const americanExpressBeginning = /^(?:3[47].{0,16})$/;
 			const americanExpress = /^(?:3[47][0-9]{13})$/;
 			const visaBeginning = /^(?:4.{0,16})$/;
@@ -174,63 +186,49 @@ class App extends Component {
 			const JCB = /^(?:(?:2131|1800|35\d{3})\d{11})$/;
 			
 			if(inputValue.match(americanExpressBeginning)) {
-				console.log("This is a valid Amercican Express credit card number BEGINNING!");
 				this.setState({paymentSystem: 'american-express'})
 				if(inputValue.match(americanExpress)) {
-					console.log("This is a valid Amercican Express credit card number!");
 					this.setState({cardNumberIsValid: true});
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
 			} else if(inputValue.match(visaBeginning)) {	
-				console.log("This is a valid Visa credit card number BEGINNING!");
 				this.setState({paymentSystem: 'visa'})
 				if(inputValue.match(visa)) {	
-					console.log("This is a valid Visa credit card number!");
 					this.setState({cardNumberIsValid: true});
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
 			} else if(inputValue.match(masterCardBeginning)) {	
-				console.log("This is a valid Master Card start credit card number BEGINNING!");
 				this.setState({paymentSystem: 'mastercard'})
 				if(inputValue.match(masterCard)) {	
 					this.setState({cardNumberIsValid: true});
-					console.log("This is a valid Master Card credit card number!");
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
-				console.log("This is a valid Master Card start credit card number!");
 			} else if(inputValue.match(dicsoverCardBeginning)) {	
-				console.log("This is a valid Discover Card credit card number BEGINNING!");
 				this.setState({paymentSystem: 'discover'})
 				if(inputValue.match(dicsoverCard)) {	
 					this.setState({cardNumberIsValid: true});
-					console.log("This is a valid Discover Card credit card number!");
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
 			} else if(inputValue.match(dinerClubBeginnig)) {
-				console.log("This is a valid Diner Club Card credit card number BEGINNING!");
 				this.setState({paymentSystem: 'dinnerclub'})
 				if(inputValue.match(dinerClub)) {
 					this.setState({cardNumberIsValid: true});
-					console.log("This is a valid Diner Club Card credit card number!");
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
 			} else if(inputValue.match(JCBBeginning)) {	
-				console.log("This is a valid JCB Card credit card number BEGINNING!");
 				this.setState({paymentSystem: 'JCB'})
 				if(inputValue.match(JCB)) {	
 					this.setState({cardNumberIsValid: true});
-					console.log("This is a valid JCB Card credit card number!");
 				} else {
 					this.setState({cardNumberIsValid: false});
 				}
 			} else {
 				this.setState({paymentSystem: ''})
-				console.log("Not a valid credit card number!");
 			}
 		}
 	}
