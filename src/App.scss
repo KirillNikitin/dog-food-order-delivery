@@ -273,6 +273,18 @@ input {
     }
   }
 
+  .email-valid {
+    position: absolute;
+    left: 220px;
+    top: 30px;
+    font-size: 120%;
+    color: #2ddc20;
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
   //card
   .card {
     width: 510px;
